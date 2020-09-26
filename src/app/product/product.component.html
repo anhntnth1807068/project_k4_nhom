@@ -43,15 +43,10 @@
             </div>
             <div class="product-thumbs">
               <div class="product-thumbs-track ps-slider owl-carousel">
-                <div class="pt"
-                     data-imgbigurl="https://product.hstatic.net/200000037048/product/chuon_chuon_581814d062aa4f4199b4af90406b9d15_master.jpg">
+                <div class="pt" *ngFor="let list of listImage"><a href="{{list.url}}">
                   <img
-                    src="https://product.hstatic.net/200000037048/product/chuon_chuon_581814d062aa4f4199b4af90406b9d15_master.jpg"
-                    alt=""></div>
-                <div class="pt" data-imgbigurl="../../assets/img/product-single/product-3.jpg"><img
-                  src="../../assets/img/product-single/product-3.jpg" alt=""></div>
-                <div class="pt" data-imgbigurl="../../assets/img/product-single/product-3.jpg"><img
-                  src="../../assets/img/product-single/product-3.jpg" alt=""></div>
+                    src="{{list.url}}" alt="">
+                </a></div>
               </div>
             </div>
           </div>
@@ -76,33 +71,27 @@
               </div>
               <form #form="ngForm" (ngSubmit)="addToCart(product.productId)">
 
-                <div class="pd-size-choose">
-                  <select name="property" id="property" [(ngModel)]="property">
-                    <option value="S">
-                      <div class="sc-item">
-                        <input type="radio" id="sm-size">
-                        <label for="sm-size">s</label>
-                      </div>
-                    </option>
-                    <option value="M">
-                      <div class="sc-item">
-                        <input type="radio" id="md-size">
-                        <label for="md-size">m</label>
-                      </div>
-                    </option>
-                    <option value="L">
-                      <div class="sc-item">
-                        <input type="radio" id="lg-size">
-                        <label for="lg-size">l</label>
-                      </div>
-                    </option>
-                    <option value="XS">
-                      <div class="sc-item">
-                        <input type="radio" id="xl-size">
-                        <label for="xl-size">xs</label>
-                      </div>
-                    </option>
-                  </select>
+                <div class="form-row align-items-center">
+                  <div>
+                    <label>Size:</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="property"
+                            [(ngModel)]="property">
+                      <option value="S" selected>
+                        S
+                      </option>
+                      <option value="M">
+                        M
+                      </option>
+                      <option value="L">
+                        L
+                      </option>
+                      <option value="XS">
+                        <div class="sc-item">
+                          XS
+                        </div>
+                      </option>
+                    </select>
+                  </div>
                 </div>
 
                 <div class="quantity">

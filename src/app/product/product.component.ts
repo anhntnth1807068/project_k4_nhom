@@ -8,6 +8,7 @@ import {CommentRating} from '../model/commentRating';
 import {Accounts} from '../model/account';
 import {Cart} from '../model/cart';
 import {CartService} from '../service/cart.service';
+import {Images} from '../model/images';
 
 @Component({
   selector: 'app-product',
@@ -40,6 +41,8 @@ export class ProductComponent implements OnInit {
 
   listCart: [];
 
+  listImage: Images[];
+
   cart: Cart = new Cart();
 
 
@@ -52,6 +55,7 @@ export class ProductComponent implements OnInit {
       this.detail(this.productId);
       this.warehouseByProductId(this.productId);
       this.commentRating(this.productId);
+      this.images(this.productId);
     });
   }
 
@@ -68,7 +72,7 @@ export class ProductComponent implements OnInit {
         this.cart.totalPrice = this.productToCart.productPrice * this.quantity;
         this.cart.quantity = this.quantity;
         this.CartSerice.addToCart(this.cart);
-        this.router.navigate(['/shopping-cart'])
+        this.router.navigate(['/shopping-cart']);
       } else {
 
         // localStorage.setItem('cart', JSON.stringify(this.listCart));
@@ -90,6 +94,14 @@ export class ProductComponent implements OnInit {
       this.service.getAccount(this.accountId).subscribe((item3: any) => {
         this.account = item3.data;
       });
+    });
+  }
+
+  images(id: string) {
+    this.service.images(id).subscribe((items: any[]) => {
+      // @ts-ignore
+      this.listImage = items.imageDTOS;
+      console.log(this.listImage);
     });
   }
 

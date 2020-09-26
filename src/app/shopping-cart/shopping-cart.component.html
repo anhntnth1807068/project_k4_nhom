@@ -26,6 +26,7 @@
               <th class="p-name">Product Name</th>
               <th>Price</th>
               <th>Quantity</th>
+              <th>Property</th>
               <th>Total</th>
               <th><i class="ti-close"></i></th>
             </tr>
@@ -45,6 +46,9 @@
                     <span class="inc qtybtn" (click)="changeQuantityPlus(list.productId)">+</span>
                   </div>
                 </div>
+              </td>
+              <td class="cart-title first-row">
+                <h5>{{list.property}}</h5>
               </td>
               <td class="total-price first-row">${{list.totalPrice}}</td>
               <td class="close-td first-row"><i class="ti-close"

@@ -13,6 +13,7 @@ export class ShopService {
   private url2 = 'http://localhost:8080/warehouse';
   private url3 = 'http://localhost:8080/commentRating/getListByProductId';
   private url5 = 'http://localhost:8080/accounts';
+  private url6 = 'http://localhost:8080/products/listImage';
 
   public currentUser: Observable<Accounts>;
 
@@ -24,6 +25,10 @@ export class ShopService {
 
   load() {
     return this.http.get(this.url, this.options);
+  }
+
+  images(id: string) {
+    return this.http.get(`${this.url6}/${id}`, this.options);
   }
 
 
